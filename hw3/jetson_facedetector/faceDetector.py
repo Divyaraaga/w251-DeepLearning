@@ -28,7 +28,7 @@ while(True):
         print("face detected ",face.shape,face.dtype)
         rc,jpg = cv.imencode(".png",face)
         msg = jpg.tobytes()
-        mqttclient.publish(MQTT_TOPIC,payload=msg,qos=0,retain=False)
+        mqttclient.publish(MQTT_TOPIC,payload=msg,qos=2,retain=False)
     
 # When everything is done, release the capture
 video_capture.release()
