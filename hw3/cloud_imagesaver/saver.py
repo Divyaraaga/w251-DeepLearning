@@ -24,7 +24,7 @@ mqttclient.on_connect = on_connect
 mqttclient.on_message = on_message 
 
 mqttclient.connect(MQTT_HOST,MQTT_PORT,60)
-mqttclient.subscribe(MQTT_TOPIC, qos=1)
+mqttclient.subscribe(MQTT_TOPIC, qos=2)
 
 mqttclient.loop_forever()  # Start networking daemon
 
