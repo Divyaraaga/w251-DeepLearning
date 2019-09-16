@@ -1,0 +1,23 @@
+From ubuntu
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install necessary packages 
+RUN apt-get update
+RUN apt-get install -y -q python-opencv \
+                       python-pip \
+                       libopencv-dev \
+                       libcanberra-gtk3-module \
+                       vim-tiny \
+                       mosquitto-clients
+
+# Install paho mqtt to send messages to broker
+RUN pip install paho-mqtt
+
+RUN mkdir saver
+COPY . /saver
+WORKDIR /saver
+
+ENTRYPOINT ["python" ]
+CMD ["saver.py" ]
+
