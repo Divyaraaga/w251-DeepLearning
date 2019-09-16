@@ -16,7 +16,7 @@ def on_connect_cloud(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     print("on message received")
-    cloudmqttclient.publish(CLOUD_MQTT_TOPIC,payload=msg.payload,qos=0,retain=False)
+    cloudmqttclient.publish(CLOUD_MQTT_TOPIC,payload=msg.payload,qos=2,retain=False)
 
 cloudmqttclient = mqtt.Client()
 cloudmqttclient.connect(CLOUD_MQTT_HOST,CLOUD_MQTT_PORT,60)
@@ -27,6 +27,6 @@ mqttclient.on_connect = on_connect
 mqttclient.on_message = on_message 
 
 mqttclient.connect(MQTT_HOST,MQTT_PORT,60)
-mqttclient.subscribe(MQTT_TOPIC, qos=1)
+mqttclient.subscribe(MQTT_TOPIC, qos=2)
 
 mqttclient.loop_forever()  # Start networking daemon
